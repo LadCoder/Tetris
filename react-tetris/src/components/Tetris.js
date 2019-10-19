@@ -21,3 +21,5 @@ const Tetris = () => {
         </div>
     );
 };
+
+export default Tetris;
