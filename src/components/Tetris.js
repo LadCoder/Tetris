@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
+import ReactHowler from 'react-howler';
 
+import bgMusic from '../sounds/tetris.mp3';
+import { VolumeUp, VolumeOff} from '@material-ui/icons';
 import { createStage, checkCollision } from '../gameHelpers';
 
 // Styled Components
@@ -20,6 +23,7 @@ import StartButton from './StartButton';
 const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
+    const [volume, setVolume] = useState(null);
 
     const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
     const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
@@ -38,6 +42,7 @@ const Tetris = () => {
         setScore(0);
         setRows(0);
         setLevel(0);
+        setVolume(true)
     }
 
     const drop = () => {
@@ -95,6 +100,11 @@ const Tetris = () => {
             <StyledTetris>
                 <Stage stage={stage}/>
                 <aside>
+                    <ReactHowler
+                        src={bgMusic}
+                        playing={volume}
+                        loop={true}
+                    />
                     {gameOver ? (
                         <Display gameOver={gameOver} text="Game Over" />
                     ) : (
@@ -102,6 +112,7 @@ const Tetris = () => {
                             <Display text={`Score: ${score}`} />
                             <Display text={`Rows: ${rows}`} />
                             <Display text={`Level: ${level}`} />
+                            <Display text={volume ? <VolumeUp onClick={() =>{setVolume(!volume)} }/> : <VolumeOff onClick={() =>{setVolume(!volume)} }/> }/>    
                         </div>
                     )}
                     <StartButton callback={startGame}/>
