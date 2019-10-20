@@ -1,15 +1,15 @@
 # Heroku Tetris
 
-A web-browser based tetris game built in ReactJS.
+A web-browser based tetris game built in ReactJS and served with NodeJS.
 
-### Learning Outcomes
+## Learning Outcomes
 
 * Use of custom React hooks: useState, useCallback, useEffect, useInterval to set up the player and stage.
 * Use of callbacks to prevent infinite loops from occuring.
 * Retro themed application styling.
 * Heroku Continuous Integration deployment.
 
-### `Input`
+## Input
 
 * Use the start button to launch the game.<br />
 * Use the left and right arrow keys to move the tetrimino from side to side.<br />
@@ -22,11 +22,25 @@ A web-browser based tetris game built in ReactJS.
 
 The application is served to the user with [NodeJS](https://npmjs.com).
 
+## Setting up
+
+The following commands will make a local copy of the git repository and then runs the application in development mode.<br/>
+
+```
+git clone https://github.com/LadCoder/Tetris.git
+cd Tetris
+npm start
+```
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
 ## Usage
 
-Open the project directory in a terminal and run:
+```
+import Tetris from './components/Tetris';
 
-```npm start```
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+const App = () => (
+  <div className="App">
+    <Tetris />
+  </div>
+);
+```
