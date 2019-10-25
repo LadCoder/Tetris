@@ -105,16 +105,15 @@ const Tetris = () => {
                         playing={volume}
                         loop={true}
                     />
-                    {gameOver ? (
+                    {gameOver && (
                         <Display gameOver={gameOver} text="Game Over" />
-                    ) : (
-                        <div>
-                            <Display text={`Score: ${score}`} />
-                            <Display text={`Rows: ${rows}`} />
-                            <Display text={`Level: ${level}`} />
-                            <Display text={volume ? <VolumeUp onClick={() =>{setVolume(!volume)} }/> : <VolumeOff onClick={() =>{setVolume(!volume)} }/> }/>    
-                        </div>
                     )}
+                    <div>
+                        <Display text={`Score: ${score}`} />
+                        <Display text={`Rows: ${rows}`} />
+                        <Display text={`Level: ${level}`} />
+                        <Display text={volume ? <VolumeUp onClick={() =>{setVolume(!volume)} }/> : <VolumeOff onClick={() =>{setVolume(!volume)} }/> }/>    
+                    </div>
                     <StartButton callback={startGame}/>
                 </aside>
             </StyledTetris>
