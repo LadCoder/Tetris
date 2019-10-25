@@ -37,7 +37,7 @@ const Tetris = () => {
 
     const startGame = () => {
         setStage(createStage());
-        setDropTime(1000);
+        setDropTime(1000 / (level + 1) + 200);
         resetPlayer();
         setGameOver(false);
         setScore(0);
@@ -69,7 +69,7 @@ const Tetris = () => {
     const keyUp = ({ keyCode }) => {
         if(!gameOver){
             if(keyCode === 40) {
-                setDropTime(1000);
+                setDropTime(1000 / (level + 1) + 200);
             }
         }
     }
@@ -114,7 +114,7 @@ const Tetris = () => {
     return (
         <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={e => move(e)} onKeyUp={keyUp}>
             <StyledTetris>
-                <Stage stage={stage}/>
+                <Stage stage={stage} paused={paused}/>
                 <aside>
                     <ReactHowler
                         src={bgMusic}
