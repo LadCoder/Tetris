@@ -24,6 +24,7 @@ const Tetris = () => {
     const [dropTime, setDropTime] = useState(null);
     const [gameOver, setGameOver] = useState(false);
     const [volume, setVolume] = useState(null);
+    const [paused, setPaused] = useState(false);
 
     const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
     const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
@@ -42,7 +43,8 @@ const Tetris = () => {
         setScore(0);
         setRows(0);
         setLevel(0);
-        setVolume(true)
+        setVolume(true);
+        setPaused(false);
     }
 
     const drop = () => {
@@ -76,6 +78,18 @@ const Tetris = () => {
         setDropTime(null);
         drop();
     }
+    
+    const pauseGame = () => {
+        if(!paused){
+            setDropTime(null);
+            setVolume(false);
+            setPaused(true);
+        } else if(paused){
+            setDropTime(1000 / (level + 1) + 200);
+            setVolume(true);
+            setPaused(false);
+        }
+    }
 
     const move = ({ keyCode }) => {
         if (!gameOver){
@@ -87,6 +101,8 @@ const Tetris = () => {
                 dropPlayer();
             }else if(keyCode === 38) {
                 playerRotate(stage, 1);
+            }else if(keyCode === 32) {
+                pauseGame(); 
             }
         }
     }
