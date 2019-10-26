@@ -43,4 +43,4 @@ const App = () => (
     <Tetris />
   </div>
 );
-```"# RJS-Tetris" 
+```
