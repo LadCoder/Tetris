@@ -8,6 +8,7 @@ A web-browser based tetris game built in ReactJS and served with NodeJS.
 * Use of callbacks to prevent infinite loops from occuring.
 * Retro themed application styling.
 * Heroku Continuous Integration deployment.
+* Firebase Deployment.
 
 ## Input
 
